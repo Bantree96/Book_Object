@@ -10,10 +10,14 @@ namespace TicketSale
 	{
 		private TicketOffice _ticketOffice;
 
-		public TicketOffice TicketOffice { get; }
 		public TicketSeller(TicketOffice ticketOffice)
 		{
 			_ticketOffice = ticketOffice;
+		}
+
+		public void SellTo(Audience audience)
+		{
+			_ticketOffice.PlusAmount(audience.Buy(_ticketOffice.GetTicket()));
 		}
 	}
 }

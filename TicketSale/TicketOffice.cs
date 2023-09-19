@@ -17,7 +17,12 @@ namespace TicketSale
 			_ticket = tickets;
 		}
 
-		public Ticket GetTicket()
+		public void SellTicketTo(Audience audience)
+		{
+			PlusAmount(audience.Buy(GetTicket()));
+		}
+
+		private Ticket GetTicket()
 		{
 			Ticket firstTicket = _ticket.First();
 			_ticket.RemoveAt(0);
@@ -29,7 +34,7 @@ namespace TicketSale
 			_amount -= amount;
 		}
 
-		public void PlusAmount(long amount)
+		private void PlusAmount(long amount)
 		{
 			_amount += amount;
 		}

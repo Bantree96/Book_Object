@@ -33,7 +33,8 @@ namespace TicketSale
 			_invitation = invitation;
 			_amount = amount;
 		}
-		public bool HasInvitation()
+
+		private bool HasInvitation()
 		{
 			return _invitation != null;
 		}
@@ -43,7 +44,7 @@ namespace TicketSale
 			return Ticket != null;
 		}
 
-		public void MinusAmount(long amount)
+		private void MinusAmount(long amount)
 		{
 			_amount -= amount;
 		}
@@ -51,6 +52,21 @@ namespace TicketSale
 		public void PlusAmount(long amount)
 		{
 			_amount += amount;
+		}
+
+		public long Hold(Ticket ticket)
+		{
+			if (HasInvitation())
+			{
+				Ticket = ticket;
+				return 0;
+			}
+			else
+			{
+				Ticket = ticket;
+				MinusAmount(ticket.Fee);
+				return ticket.Fee;
+			}
 		}
 
 	}

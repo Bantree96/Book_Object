@@ -17,7 +17,7 @@ namespace TicketSale
 
 		public void SellTo(Audience audience)
 		{
-			_ticketOffice.PlusAmount(audience.Buy(_ticketOffice.GetTicket()));
+			_ticketOffice.SellTicketTo(audience);
 		}
 	}
 }
